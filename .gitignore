@@ -1,0 +1,5 @@
+*.elc
+elpa/
+.DS_Store
+Enlish.tut
+*.dat
