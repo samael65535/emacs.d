@@ -3,7 +3,10 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        beginning-of-buffer
         indent-for-tab-command
+        org-self-insert-command
+        smex
         whole-line-or-region-kill-region
         whole-line-or-region-yank
         ))

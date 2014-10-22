@@ -90,7 +90,8 @@ the mode-line."
 
 (require `multi-term)
 (setq multi-term-program "/bin/zsh")
-
-
+;;; 在org-mode时加载 export markdown
+(eval-after-load "org"
+  '(require 'ox-md nil t))   
 (provide 'init-samael)
 
