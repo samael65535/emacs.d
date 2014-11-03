@@ -1,4 +1,4 @@
-(recentf-mode 1)
+(recentf-mode10)
 (setq recentf-max-saved-items 1000
       recentf-exclude '("/tmp/" "/ssh:"))
 

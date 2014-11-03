@@ -18,7 +18,6 @@ the mode-line."
 (window-number-mode 1)
 (hl-line-mode t)
 (window-number-meta-mode 1)
-;; (require 'init-local nil t)
 (prefer-coding-system 'utf-8)
 (setq ring-bell-function 'ignore)                       ; 无闪屏
 ;; (setq debug-on-error t) 				; 报告错误
