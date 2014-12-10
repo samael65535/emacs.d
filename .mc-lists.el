@@ -5,6 +5,8 @@
       '(
         beginning-of-buffer
         indent-for-tab-command
+        markdown-cycle
+        markdown-exdent-or-delete
         org-self-insert-command
         smex
         whole-line-or-region-kill-region
