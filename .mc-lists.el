@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         beginning-of-buffer
+        c-electric-delete-forward
         indent-for-tab-command
         markdown-cycle
         markdown-exdent-or-delete
