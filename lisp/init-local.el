@@ -1,7 +1,7 @@
 ;; c;; (add-to-list 'load-path "~/.emacs.d/git-emacs")  ; or your installation path
-
 ;; ;;(yas/global-mode 1)
 
+(require 'mdbook)
 (autoload 'window-number-mode "window-number"
   "A global minor mode that enables selection of windows according to
 numbers with the C-x C-j prefix.  Another mode,
@@ -111,9 +111,9 @@ the mode-line."
                             ))
 
 (add-hook 'sgml-mode-hook '(lambda ()
-						  (local-set-key (kbd "C-M-<tab>")
-										 'zencoding-expand-yas)
-						  ))
+							 (local-set-key (kbd "C-M-<tab>")
+											'zencoding-expand-yas)
+							 ))
 
 (provide 'init-local)
 

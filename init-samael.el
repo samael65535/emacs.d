@@ -1,7 +1,6 @@
 ;; (add-to-list 'load-path "~/.emacs.d/git-emacs")  ; or your installation path
 
 ;;(yas/global-mode 1)
-
 (autoload 'window-number-mode "window-number"
   "A global minor mode that enables selection of windows according to
 numbers with the C-x C-j prefix.  Another mode,
@@ -122,5 +121,6 @@ the mode-line."
                             (local-set-key (kbd "C-c s i")
                                            'org-insert-src-block)
                             ))
+(add-hook 'markdown-mode 'insert-md-book)
 (provide 'init-samael)
 
