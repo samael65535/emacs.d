@@ -3,19 +3,23 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-        beginning-of-buffer
-        c-electric-delete-forward
-        indent-for-tab-command
-        markdown-cycle
-        markdown-exdent-or-delete
-        org-self-insert-command
-        smex
-        whole-line-or-region-kill-region
-        whole-line-or-region-yank
-        ))
+		beginning-of-buffer
+		c-electric-delete-forward
+		ido-switch-buffer
+		indent-for-tab-command
+		markdown-cycle
+		markdown-exdent-or-delete
+		org-self-insert-command
+		paredit-backward-kill-word
+		smex
+		transpose-words
+		whole-line-or-region-kill-region
+		whole-line-or-region-yank
+		))
 
 (setq mc/cmds-to-run-once
       '(
-        js2-mode-show-node
-        whole-line-or-region-kill-ring-save
-        ))
+		cua-delete-region
+		js2-mode-show-node
+		whole-line-or-region-kill-ring-save
+		))
