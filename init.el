@@ -15,11 +15,22 @@
 (defconst *is-a-mac* (eq system-type 'darwin))
 
 ;;----------------------------------------------------------------------------
+;; Temporarily reduce garbage collection during startup
+;;----------------------------------------------------------------------------
+(defconst sanityinc/initial-gc-cons-threshold gc-cons-threshold
+  "Initial value of `gc-cons-threshold' at start-up time.")
+(setq gc-cons-threshold (* 128 1024 1024))
+(add-hook 'after-init-hook
+          (lambda () (setq gc-cons-threshold sanityinc/initial-gc-cons-threshold)))
+
+;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (require 'init-compat)
 (require 'init-utils)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
+;; Calls (package-initialize)
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 
@@ -43,7 +54,6 @@
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
-(require 'init-proxies)
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
@@ -52,20 +62,28 @@
 (require 'init-flycheck)
 
 (require 'init-recentf)
-(require 'init-ido)
+(require 'init-smex)
+;; If you really prefer ido to ivy, change the comments below. I will
+;; likely remove the ido config in due course, though.
+;; (require 'init-ido)
+(require 'init-ivy)
 (require 'init-hippie-expand)
-(require 'init-auto-complete)
+(require 'init-company)
 (require 'init-windows)
 (require 'init-sessions)
 (require 'init-fonts)
 (require 'init-mmm)
 
 (require 'init-editing-utils)
+(require 'init-whitespace)
+(require 'init-fci)
 
 (require 'init-vc)
 (require 'init-darcs)
 (require 'init-git)
 (require 'init-github)
+
+(require 'init-projectile)
 
 (require 'init-compile)
 (require 'init-crontab)
@@ -81,16 +99,18 @@
 (require 'init-css)
 (require 'init-haml)
 (require 'init-python-mode)
-;; (require 'init-haskell)
+(unless (version<= emacs-version "24.3")
+  (require 'init-haskell))
+(require 'init-elm)
 (require 'init-ruby-mode)
 (require 'init-rails)
-;; (require 'init-sql)
+(require 'init-sql)
 
 (require 'init-paredit)
 (require 'init-lisp)
 (require 'init-slime)
-(require 'init-clojure)
-(when (>= emacs-major-version 24)
+(unless (version<= emacs-version "24.2")
+  (require 'init-clojure)
   (require 'init-clojure-cider))
 (require 'init-common-lisp)
 
@@ -99,6 +119,7 @@
 
 (require 'init-misc)
 
+(require 'init-folding)
 (require 'init-dash)
 (require 'init-ledger)
 ;; Extra packages which don't require any configuration
@@ -122,7 +143,6 @@
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
 ;;----------------------------------------------------------------------------
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
 
@@ -130,15 +150,14 @@
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings
 ;;----------------------------------------------------------------------------
-(when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
-  (error "Please move init-local.el to ~/.emacs.d/lisp"))
-(require 'init-local)
+(require 'init-local nil t)
 
 
 ;;----------------------------------------------------------------------------
 ;; Locales (setting them earlier in this file doesn't work in X)
 ;;----------------------------------------------------------------------------
 (require 'init-locales)
+
 (add-hook 'after-init-hook
           (lambda ()
             (message "init completed in %.2fms"
