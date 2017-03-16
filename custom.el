@@ -23,7 +23,7 @@
  '(indent-tabs-mode t)
  '(js-indent-level 2 t)
  '(js-switch-indent-offset 2)
- '(js2-basic-offset 4)
+ '(js2-basic-offset 4 t)
  '(package-directory-list nil)
  '(safe-local-variable-values
    (quote
@@ -36,6 +36,9 @@
  '(send-mail-function nil)
  '(session-use-package t nil (session))
  '(show-paren-mode t)
+ '(speedbar-supported-extension-expressions
+   (quote
+	(".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".js" ".f\\(90\\|77\\|or\\)?" ".ad[abs]" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?" ".go")))
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)

@@ -34,10 +34,10 @@
                ac-source-words-in-all-buffer))
 
 (dolist (mode '(magit-log-edit-mode log-edit-mode org-mode text-mode haml-mode
-                sass-mode yaml-mode csv-mode espresso-mode haskell-mode
-                html-mode nxml-mode sh-mode smarty-mode clojure-mode
-                lisp-mode textile-mode markdown-mode tuareg-mode
-                js3-mode css-mode less-css-mode sql-mode ielm-mode c++-mode))
+                                    sass-mode yaml-mode csv-mode espresso-mode haskell-mode
+                                    html-mode nxml-mode sh-mode smarty-mode clojure-mode
+                                    lisp-mode textile-mode markdown-mode tuareg-mode
+                                    js3-mode css-mode less-css-mode sql-mode ielm-mode c++-mode go-mode))
   (add-to-list 'ac-modes mode))
 
 
@@ -47,5 +47,6 @@
 
 (setq dabbrev-friend-buffer-function 'sanityinc/dabbrev-friend-buffer)
 
+(global-auto-complete-mode t)
 
 (provide 'init-auto-complete)

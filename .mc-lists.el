@@ -5,12 +5,14 @@
       '(
 		beginning-of-buffer
 		c-electric-delete-forward
+		electric-pair-delete-pair
 		ido-switch-buffer
 		indent-for-tab-command
 		markdown-cycle
 		markdown-exdent-or-delete
 		org-self-insert-command
 		paredit-backward-kill-word
+		paredit-forward-kill-word
 		smex
 		transpose-words
 		whole-line-or-region-kill-region

@@ -84,43 +84,28 @@ the mode-line."
 (setq-default indent-tabs-mode nil)
 (setq indent-line-function 'insert-tab)
 (setq js2-mode-hook
-  '(lambda () (progn
-    (set-variable 'indent-tabs-mode nil))))
+      '(lambda () (progn
+			   (set-variable 'indent-tabs-mode nil))))
 
 (require `multi-term)
 (setq multi-term-program "/bin/zsh")
-;;; 在org-mode时加载 export markdown
+            ;;; 在org-mode时加载 export markdown
 (eval-after-load "org"
   '(require 'ox-md nil t))
 
-(defun org-insert-src-block (src-code-type)
-  "Insert a `SRC-CODE-TYPE' type source code block in org-mode."
-  (interactive
-   (let ((src-code-types
-          '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
-            "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
-            "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
-            "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
-            "scheme" "sqlite")))
-     (list (ido-completing-read "Source code type: " src-code-types))))
-  (progn
-    (newline-and-indent)
-    (insert (format "#+BEGIN_SRC %s\n" src-code-type))
-    (newline-and-indent)
-    (insert "#+END_SRC\n")
-    (previous-line 2)
-    (org-edit-src-code)))
-
 (add-hook 'org-mode-hook '(lambda ()
-                            ;; turn on flyspell-mode by default
-                            (flyspell-mode 1)
-                            ;; keybinding for editing source code blocks
-                            (local-set-key (kbd "C-c s e")
-                                           'org-edit-src-code)
-                            ;; keybinding for inserting code blocks
-                            (local-set-key (kbd "C-c s i")
-                                           'org-insert-src-block)
-                            ))
+							;; turn on flyspell-mode by default
+							(flyspell-mode 1)
+							;; keybinding for editing source code blocks
+							(local-set-key (kbd "C-c s e")
+										   'org-edit-src-code)
+							;; keybinding for inserting code blocks
+							(local-set-key (kbd "C-c s i")
+										   'org-insert-src-block)
+							))
 (add-hook 'markdown-mode 'insert-md-book)
-(provide 'init-samael)
 
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+
+(provide 'init-samael)
