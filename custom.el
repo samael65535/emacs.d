@@ -39,6 +39,9 @@
  '(speedbar-supported-extension-expressions
    (quote
 	(".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".js" ".f\\(90\\|77\\|or\\)?" ".ad[abs]" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?" ".go")))
+ '(sr-speedbar-default-width 30)
+ '(sr-speedbar-max-width 40)
+ '(sr-speedbar-right-side nil)
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)

@@ -31,7 +31,8 @@ the mode-line."
 (setq mouse-yank-at-point t)				; 支持中键粘贴
 (global-cwarn-mode 1) 					; 高亮显示C/C++中的可能的错误(CWarn mode)
 (setq initial-scratch-message ";; Abandon hope all ye who enter here\n") ;设置scratch的欢迎文字
-(global-set-key [(f1)] 'speedbar) 			; 开启speedbar
+(global-set-key [(f2)] 'sr-speedbar-open) 			; 开启speedbar
+(global-set-key [(f3)] 'sr-speedbar-close) 			; 关闭speedbar
 (setq default-directory "~/Code")			; 设置打开时的默认路径
 (setq inhibit-startup-message t) 			; 去掉欢迎界面
 (global-set-key [C-tab] 'other-window) 			; 切换到另一个窗口，快捷键为C+Tab
@@ -52,30 +53,30 @@ the mode-line."
 (require 'linum)
 (setq linum-format "%3d ")
 
-;对所有文件生效
+										;对所有文件生效
 (add-hook 'find-file-hooks (lambda () (linum-mode 1)))
 
 (setq-default cursor-type 'box ); 设置光标为方块
- (setq user-full-name "samael") 
- (setq user-mail-address "samael.65535@gmail.com")
+(setq user-full-name "samael") 
+(setq user-mail-address "samael.65535@gmail.com")
 
 
 ;; 加载clang  
 (require 'auto-complete-clang)  
-  
+
 ;; 添加c-mode和c++-mode的hook，开启auto-complete的clang扩展  
-(defun wttr/ac-cc-mode-setup ()  
-  (make-local-variable 'ac-auto-start)  
-  (setq ac-auto-start nil)              ;auto complete using clang is CPU sensitive  
-  (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))  
-(add-hook 'c-mode-hook 'wttr/ac-cc-mode-setup)  
-(add-hook 'c++-mode-hook 'wttr/ac-cc-mode-setup)
-(setq ac-clang-flags  (list   
- "/usr/include/c++/4.2.1 "
- "/usr/include/c++/4.2.1/backward"
- "/usr/local/include" 
- "/usr/include"
-))
+;; (defun wttr/ac-cc-mode-setup ()  
+;;   (make-local-variable 'ac-auto-start)  
+;;   (setq ac-auto-start nil)              ;auto complete using clang is CPU sensitive  
+;;   (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))  
+;; (add-hook 'c-mode-hook 'wttr/ac-cc-mode-setup)  
+;; (add-hook 'c++-mode-hook 'wttr/ac-cc-mode-setup)
+;; (setq ac-clang-flags  (list   
+;;  "/usr/include/c++/4.2.1 "
+;;  "/usr/include/c++/4.2.1/backward"
+;;  "/usr/local/include" 
+;;  "/usr/include"
+;; ))
 
 (set-frame-font "Monaco-13")
 (set-fontset-font "fontset-default" 'han '("STHeiti" . "unicode-bmp"))
@@ -84,12 +85,12 @@ the mode-line."
 (setq-default indent-tabs-mode nil)
 (setq indent-line-function 'insert-tab)
 (setq js2-mode-hook
-      '(lambda () (progn
+	  '(lambda () (progn
 			   (set-variable 'indent-tabs-mode nil))))
 
 (require `multi-term)
 (setq multi-term-program "/bin/zsh")
-            ;;; 在org-mode时加载 export markdown
+                                                                                                                                                                                                                                                                                ;;; 在org-mode时加载 export markdown
 (eval-after-load "org"
   '(require 'ox-md nil t))
 
@@ -107,5 +108,7 @@ the mode-line."
 
 (require 'go-autocomplete)
 (require 'auto-complete-config)
+(define-key ac-mode-map (kbd "TAB") 'auto-complete)
+(setenv "GOPATH" "/Users/samael/gopath")
 
 (provide 'init-samael)

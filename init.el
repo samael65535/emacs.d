@@ -159,17 +159,19 @@
 (require 'init-locales)
 
 
-(require 'init-samael)
-(add-hook 'after-init-hook
-          (lambda ()
-            (message "init completed in %.2fms"
-                     (sanityinc/time-subtract-millis after-init-time before-init-time))))
+
 
 
 
 (require 'auto-complete)
 (global-auto-complete-mode t)
 (setq auto-save-default nil)
+
+(require 'init-samael)
+(add-hook 'after-init-hook
+          (lambda ()
+            (message "init completed in %.2fms"
+                     (sanityinc/time-subtract-millis after-init-time before-init-time))))
 
 (provide 'init)
 
