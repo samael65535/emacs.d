@@ -109,6 +109,6 @@ the mode-line."
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (define-key ac-mode-map (kbd "TAB") 'auto-complete)
-(setenv "GOPATH" "/Users/samael/gopath")
+(setenv "GOPATH" "/Users/samael/gopath:/Users/samael/Code/golang")
 
 (provide 'init-samael)

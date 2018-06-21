@@ -12,6 +12,7 @@
 		markdown-exdent-or-delete
 		org-self-insert-command
 		paredit-backward-kill-word
+		paredit-doublequote
 		paredit-forward-kill-word
 		smex
 		transpose-words
@@ -23,5 +24,6 @@
       '(
 		cua-delete-region
 		js2-mode-show-node
+		paredit-forward-delete
 		whole-line-or-region-kill-ring-save
 		))
